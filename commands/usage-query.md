@@ -1,13 +1,21 @@
 ---
 name: usage-query
-allowed-tools: all
+allowed-tools: Bash
 description: Query MiniMax Coding Plan usage statistics
 ---
 
 # Usage Query
 
-Invoke @minimax-plan-usage:usage-query-agent to retrieve the usage information for the current account.
+Run the usage query script and display the results in Chinese.
 
-## Critical constraint
+## Execution
 
-**Run the query exactly once** — regardless of success or failure, execute a single query and return the result immediately.
+Use Node.js to execute the script:
+
+```bash
+node skills/usage-query-skill/scripts/query-usage.mjs
+```
+
+## Result
+
+Display the full output from the script exactly as returned.
