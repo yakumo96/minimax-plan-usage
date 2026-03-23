@@ -8,7 +8,7 @@
   },
   "plugins": [
     {
-      "name": "@yakumoryo/minimax-plan-usage",
+      "name": "minimax-plan-usage",
       "source": "./",
       "category": "development",
       "description": "Query quota and usage statistics for MiniMax Coding Plan service. Uses ANTHROPIC_AUTH_TOKEN and ANTHROPIC_BASE_URL from your Claude Code settings."
