@@ -68,10 +68,16 @@ const queryUsage = () => {
             return resolve();
           }
 
-          const m = json.model_remains[0];
-          const remaining = m.current_interval_remaining_count;
+          // 找到 MiniMax-M* 模型的用量
+          const m = json.model_remains.find(item => item.model_name === 'MiniMax-M*');
+          if (!m) {
+            console.log('未找到 MiniMax-M* 用量数据');
+            return resolve();
+          }
+
           const total = m.current_interval_total_count;
-          const used = total - remaining;
+          const used = m.current_interval_usage_count;
+          const remaining = total - used;
           const percentage = Math.round((used / total) * 100);
 
           const remainingMs = m.remains_time;
@@ -87,10 +93,10 @@ const queryUsage = () => {
             minute: '2-digit',
           });
 
-          const weeklyRemaining = m.current_weekly_remaining_count;
           const weeklyTotal = m.current_weekly_total_count;
-          const weeklyUsed = weeklyTotal - weeklyRemaining;
-          const weeklyPercentage = Math.floor((weeklyUsed / weeklyTotal) * 100);
+          const weeklyUsed = m.current_weekly_usage_count;
+          const weeklyRemaining = weeklyTotal - weeklyUsed;
+          const weeklyPercentage = weeklyTotal > 0 ? Math.floor((weeklyUsed / weeklyTotal) * 100) : 0;
           const weeklyRemainingMs = m.weekly_remains_time;
           const weeklyDays = Math.floor(weeklyRemainingMs / (1000 * 60 * 60 * 24));
           const weeklyHours = Math.floor((weeklyRemainingMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -117,10 +123,12 @@ const queryUsage = () => {
           console.log(`剩余(5h): ${remaining.toLocaleString()} 次`);
           console.log(`重置: ${resetTime} (约${timeText})`);
           console.log('----------------------------------------');
-          console.log(`周用量: ${weeklyUsed.toLocaleString()} / ${weeklyTotal.toLocaleString()}`);
-          console.log(`周进度: [${weeklyBar}] ${weeklyPercentage}%`);
-          console.log(`周重置: ${weeklyResetTime} (约${weeklyTimeText})`);
-          console.log('----------------------------------------');
+          if (weeklyTotal > 0) {
+            console.log(`周用量: ${weeklyUsed.toLocaleString()} / ${weeklyTotal.toLocaleString()}`);
+            console.log(`周进度: [${weeklyBar}] ${weeklyPercentage}%`);
+            console.log(`周重置: ${weeklyResetTime} (约${weeklyTimeText})`);
+            console.log('----------------------------------------');
+          }
 
         } catch (e) {
           return reject(new Error(`解析响应失败: ${e.message}`));
