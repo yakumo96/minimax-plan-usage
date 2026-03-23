@@ -229,10 +229,12 @@ if (command === 'setup') {
   console.log('MiniMax Coding Plan Helper');
   console.log('');
   console.log('Usage:');
-  console.log('  npx @yakumoryo/minimax-plan-usage setup <your-token>  # 配置API Key');
-  console.log('  npx @yakumoryo/minimax-plan-usage query               # 查询用量');
+  console.log('  npx @yakumoryo/minimax-plan-usage setup <your-token>        # 配置API Key');
+  console.log('  npx @yakumoryo/minimax-plan-usage setup-url <api-url>      # 配置API URL');
+  console.log('  npx @yakumoryo/minimax-plan-usage query                    # 查询用量');
   console.log('');
   console.log('Examples:');
   console.log('  npx @yakumoryo/minimax-plan-usage setup sk-cp-YOUR_TOKEN_HERE');
+  console.log('  npx @yakumoryo/minimax-plan-usage setup-url https://api.minimaxi.com/anthropic');
   console.log('  npx @yakumoryo/minimax-plan-usage query');
 }
