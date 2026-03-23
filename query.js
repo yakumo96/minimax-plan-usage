@@ -27,15 +27,22 @@ function saveSettings(settings) {
   writeFileSync(SETTINGS_PATH, JSON.stringify(settings, null, 2));
 }
 
-function setup(token) {
+function setup(token, url) {
   if (!token || !token.startsWith('sk-cp-')) {
     console.error('Error: Invalid token format. Token should start with "sk-cp-"');
     console.error('');
-    console.error('Usage: npx @yakumoryo/minimax-plan-usage setup <your-token>');
+    console.error('Usage: npx @yakumoryo/minimax-plan-usage setup <your-token> [api-url]');
     console.error('');
-    console.error('Example:');
+    console.error('Examples:');
     console.error('  npx @yakumoryo/minimax-plan-usage setup sk-cp-YOUR_TOKEN_HERE');
+    console.error('  npx @yakumoryo/minimax-plan-usage setup sk-cp-YOUR_TOKEN_HERE https://api.minimaxi.com/anthropic');
     process.exit(1);
+  }
+
+  // Validate URL if provided
+  let apiUrl = url || `${API_HOST}/anthropic`;
+  if (url && !url.startsWith('http')) {
+    apiUrl = `https://${url}`;
   }
 
   const settings = getSettings();
@@ -43,7 +50,7 @@ function setup(token) {
   if (!settings.env) settings.env = {};
 
   settings.env.ANTHROPIC_AUTH_TOKEN = token;
-  settings.env.ANTHROPIC_BASE_URL = `${API_HOST}/anthropic`;
+  settings.env.ANTHROPIC_BASE_URL = apiUrl;
 
   if (!settings.env.ANTHROPIC_MODEL) settings.env.ANTHROPIC_MODEL = 'MiniMax-M2.7';
   if (!settings.env.ANTHROPIC_DEFAULT_HAIKU_MODEL) settings.env.ANTHROPIC_DEFAULT_HAIKU_MODEL = 'MiniMax-M2.7';
@@ -190,7 +197,8 @@ const command = process.argv[2];
 
 if (command === 'setup') {
   const token = process.argv[3];
-  setup(token);
+  const url = process.argv[4];
+  setup(token, url);
 } else if (command === 'query') {
   console.log('MiniMax API Host:', API_HOST);
   queryUsage()
