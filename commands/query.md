@@ -1,5 +1,5 @@
 ---
-name: usage-query
+name: query
 allowed-tools: Bash
 disable-model-invocation: true
 description: Query MiniMax Coding Plan usage statistics
