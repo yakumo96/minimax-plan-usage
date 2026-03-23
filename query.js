@@ -199,6 +199,24 @@ if (command === 'setup') {
   const token = process.argv[3];
   const url = process.argv[4];
   setup(token, url);
+} else if (command === 'setup-url') {
+  const url = process.argv[3];
+  if (!url) {
+    console.error('Error: URL required');
+    console.error('Usage: npx @yakumoryo/minimax-plan-usage setup-url <api-url>');
+    console.error('Example:');
+    console.error('  npx @yakumoryo/minimax-plan-usage setup-url https://api.minimaxi.com/anthropic');
+    process.exit(1);
+  }
+  let apiUrl = url.startsWith('http') ? url : `https://${url}`;
+  const settings = getSettings();
+  if (!settings.env) settings.env = {};
+  settings.env.ANTHROPIC_BASE_URL = apiUrl;
+  saveSettings(settings);
+  console.log('');
+  console.log('✅ API URL configured successfully!');
+  console.log(`  ANTHROPIC_BASE_URL: ${apiUrl}`);
+  console.log('');
 } else if (command === 'query') {
   console.log('MiniMax API Host:', API_HOST);
   queryUsage()
