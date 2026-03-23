@@ -1,0 +1,23 @@
+{
+  "name": "@yakumoryo/minimax-plan-usage",
+  "version": "0.2.5",
+  "description": "MiniMax Coding Plan setup helper and usage query tool",
+  "type": "module",
+  "keywords": [
+    "minimax",
+    "claude-code"
+  ],
+  "files": [
+    "commands",
+    "agents",
+    "skills",
+    ".claude-plugin",
+    "query.js"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "bin": {
+    "minimax-plan-usage": "./query.js"
+  }
+}
