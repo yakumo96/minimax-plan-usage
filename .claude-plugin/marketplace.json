@@ -1,6 +1,6 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "@yakumoryo/minimax-plan-usage",
+  "name": "minimax-plan-usage",
   "version": "0.2.5",
   "description": "Query quota and usage statistics for MiniMax Coding Plan service",
   "owner": {
@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "@yakumoryo/minimax-plan-usage",
-      "source": ".",
+      "source": "./",
       "category": "development",
       "description": "Query quota and usage statistics for MiniMax Coding Plan service. Uses ANTHROPIC_AUTH_TOKEN and ANTHROPIC_BASE_URL from your Claude Code settings."
     }
