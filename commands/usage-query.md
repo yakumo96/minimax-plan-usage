@@ -4,4 +4,4 @@ allowed-tools: Bash
 description: Query MiniMax Coding Plan usage statistics
 ---
 
-node skills/usage-query-skill/scripts/query-usage.mjs
+Invoke the @minimax-plan-usage:usage-query-skill to execute the usage query script.
