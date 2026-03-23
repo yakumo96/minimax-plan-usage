@@ -3,7 +3,7 @@
   "name": "@yakumoryo/minimax-plan-usage",
   "version": "0.2.5",
   "description": "Query quota and usage statistics for MiniMax Coding Plan service",
-  "owner": { "name": "yakumoryo" },
+  "owner": { "name": "yakumo96" },
   "plugins": [{
     "name": "@yakumoryo/minimax-plan-usage",
     "source": ".",
