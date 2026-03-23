@@ -1,6 +1,6 @@
 {
   "name": "@yakumoryo/minimax-plan-usage",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "MiniMax Coding Plan usage query CLI tool",
   "type": "module",
   "keywords": [
