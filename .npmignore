@@ -1,0 +1,7 @@
+.claude/
+.claude-plugin/
+agents/
+commands/
+skills/
+*.tgz
+package-lock.json
