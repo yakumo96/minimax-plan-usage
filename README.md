@@ -36,12 +36,6 @@ npx @yakumoryo/minimax-plan-usage setup-url https://api.minimaxi.com/anthropic
 npx @yakumoryo/minimax-plan-usage setup-model MiniMax-M2.7
 ```
 
-## Installation
-
-```bash
-npm install -g @yakumoryo/minimax-plan-usage
-```
-
 ## Requirements
 
 - Node.js >= 18
