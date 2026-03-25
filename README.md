@@ -17,6 +17,9 @@ minimax-plan-usage setup <your-token>
 # Configure API URL (optional, for non-default endpoints)
 minimax-plan-usage setup-url https://api.minimaxi.com/anthropic
 
+# Configure Model (optional, for custom model names)
+minimax-plan-usage setup-model MiniMax-M2.7
+
 # Query usage
 minimax-plan-usage query
 ```

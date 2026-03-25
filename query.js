@@ -217,6 +217,30 @@ if (command === 'setup') {
   console.log('✅ API URL configured successfully!');
   console.log(`  ANTHROPIC_BASE_URL: ${apiUrl}`);
   console.log('');
+} else if (command === 'setup-model') {
+  const model = process.argv[3];
+  if (!model) {
+    console.error('Error: Model name required');
+    console.error('Usage: npx @yakumoryo/minimax-plan-usage setup-model <model-name>');
+    console.error('Example:');
+    console.error('  npx @yakumoryo/minimax-plan-usage setup-model MiniMax-M2.7');
+    process.exit(1);
+  }
+  const settings = getSettings();
+  if (!settings.env) settings.env = {};
+  settings.env.ANTHROPIC_MODEL = model;
+  settings.env.ANTHROPIC_SMALL_FAST_MODEL = model;
+  settings.env.ANTHROPIC_DEFAULT_HAIKU_MODEL = model;
+  settings.env.ANTHROPIC_DEFAULT_SONNET_MODEL = model;
+  settings.env.ANTHROPIC_DEFAULT_OPUS_MODEL = model;
+  saveSettings(settings);
+  console.log('');
+  console.log('✅ Model configured successfully!');
+  console.log(`  ANTHROPIC_MODEL: ${model}`);
+  console.log(`  ANTHROPIC_DEFAULT_HAIKU_MODEL: ${model}`);
+  console.log(`  ANTHROPIC_DEFAULT_SONNET_MODEL: ${model}`);
+  console.log(`  ANTHROPIC_DEFAULT_OPUS_MODEL: ${model}`);
+  console.log('');
 } else if (command === 'query') {
   console.log('MiniMax API Host:', API_HOST);
   queryUsage()
@@ -231,10 +255,12 @@ if (command === 'setup') {
   console.log('Usage:');
   console.log('  npx @yakumoryo/minimax-plan-usage setup <your-token>        # 配置API Key');
   console.log('  npx @yakumoryo/minimax-plan-usage setup-url <api-url>      # 配置API URL');
+  console.log('  npx @yakumoryo/minimax-plan-usage setup-model <model>      # 配置模型');
   console.log('  npx @yakumoryo/minimax-plan-usage query                    # 查询用量');
   console.log('');
   console.log('Examples:');
   console.log('  npx @yakumoryo/minimax-plan-usage setup sk-cp-YOUR_TOKEN_HERE');
   console.log('  npx @yakumoryo/minimax-plan-usage setup-url https://api.minimaxi.com/anthropic');
+  console.log('  npx @yakumoryo/minimax-plan-usage setup-model MiniMax-M2.7');
   console.log('  npx @yakumoryo/minimax-plan-usage query');
 }
