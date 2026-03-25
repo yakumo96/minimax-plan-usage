@@ -28,8 +28,8 @@ function saveSettings(settings) {
 }
 
 function setup(token, url) {
-  if (!token || !token.startsWith('sk-cp-')) {
-    console.error('Error: Invalid token format. Token should start with "sk-cp-"');
+  if (!token) {
+    console.error('Error: Token required');
     console.error('');
     console.error('Usage: npx @yakumoryo/minimax-plan-usage setup <your-token> [api-url]');
     console.error('');
