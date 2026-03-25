@@ -2,6 +2,20 @@
 
 Query MiniMax Coding Plan usage statistics via CLI.
 
+## Installation
+
+### Claude Code Plugin (Recommended)
+
+```bash
+/plugin yakumo96/minimax-plan-usage
+```
+
+### npm Package (CLI only)
+
+```bash
+npm install -g @yakumoryo/minimax-plan-usage
+```
+
 ## Quick Start
 
 ```bash
