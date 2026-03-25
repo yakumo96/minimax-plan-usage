@@ -16,24 +16,23 @@ Query MiniMax Coding Plan usage statistics via CLI.
 npm install -g @yakumoryo/minimax-plan-usage
 ```
 
-## Quick Start
+## Setup
 
 ```bash
-# Configure API Key (required first time)
+# 1. Configure API Key (required)
 npx @yakumoryo/minimax-plan-usage setup <your-token>
 
-# Query usage
-npx @yakumoryo/minimax-plan-usage query
-```
-
-## Optional Setup
-
-```bash
-# Configure API URL (for non-default endpoints)
+# 2. Configure API URL (optional, for non-default endpoints)
 npx @yakumoryo/minimax-plan-usage setup-url https://api.minimaxi.com/anthropic
 
-# Configure Model (for custom model names)
+# 3. Configure Model (optional, for custom model names)
 npx @yakumoryo/minimax-plan-usage setup-model MiniMax-M2.7
+```
+
+## Query Usage
+
+```bash
+npx @yakumoryo/minimax-plan-usage query
 ```
 
 ## Requirements
