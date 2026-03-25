@@ -2,43 +2,37 @@
 
 Query MiniMax Coding Plan usage statistics via CLI.
 
+## Quick Start
+
+```bash
+# Configure API Key (required first time)
+npx @yakumoryo/minimax-plan-usage setup <your-token>
+
+# Query usage
+npx @yakumoryo/minimax-plan-usage query
+```
+
+## Optional Setup
+
+```bash
+# Configure API URL (for non-default endpoints)
+npx @yakumoryo/minimax-plan-usage setup-url https://api.minimaxi.com/anthropic
+
+# Configure Model (for custom model names)
+npx @yakumoryo/minimax-plan-usage setup-model MiniMax-M2.7
+```
+
 ## Installation
 
 ```bash
 npm install -g @yakumoryo/minimax-plan-usage
 ```
 
-## Usage
-
-```bash
-# Configure API Key (required first time)
-minimax-plan-usage setup <your-token>
-
-# Configure API URL (optional, for non-default endpoints)
-minimax-plan-usage setup-url https://api.minimaxi.com/anthropic
-
-# Configure Model (optional, for custom model names)
-minimax-plan-usage setup-model MiniMax-M2.7
-
-# Query usage
-minimax-plan-usage query
-```
-
-Or with npx:
-
-```bash
-npx @yakumoryo/minimax-plan-usage setup <your-token>
-npx @yakumoryo/minimax-plan-usage setup-url https://api.minimaxi.com/anthropic
-npx @yakumoryo/minimax-plan-usage query
-```
-
 ## Requirements
 
 - Node.js >= 18
-- `ANTHROPIC_AUTH_TOKEN` environment variable set
-- `ANTHROPIC_BASE_URL` environment variable set
 
-These are typically already configured in your Claude Code settings.
+The CLI reads settings from `~/.claude/settings.json` and uses the same authentication that Claude Code uses.
 
 ## How it works
 
